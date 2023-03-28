@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <div id="mainId">
+
+        <input type="text" name="" id="loadId" >
+    </br><br>
+        <input type="text" name="" id="clothesId" placeholder="clothesId">
+    </br><br>
+        <input type="text" name="" id="waterId" placeholder="waterId">
+    </br><br>
+        <button onclick="howMuchWater()"> Submit</button>
+   
+
+    <script>
+        
+        //var load=0 ;
+        // let catload=0;
+        //console.log(load);
+
+        // var loadFunction = function(load) {
+        //     load=document.getElementById('loadId').value;
+        //     console.log(load);
+        //     return(load);
+        // }
+     
+        
+     
+    function howMuchWater(water, load, clothes){
+            
+        var load = document.getElementById('loadId').value;
+        var clothes = document.getElementById('clothesId').value;
+        var water = document.getElementById('waterId').value;
+        console.log(load);
+        console.log(clothes);
+        console.log(water);
+        
+        var amountWater = water * 1.1 ^ (clothes - load);
+        amountWater = Math.round(amountWater)
+        console.log(amountWater);
+        return[amountWater];
+        
+    }
+
+
+        //For example, if the load is 10, the amount of water it requires is 5 and the amount of clothes to wash is 14, then you need 5 * 1.1 ^ (14 - 10)
+
+    </script>
+
+
+</body>
+</html>
