@@ -10,12 +10,15 @@
 
     <div id="mainId">
 
-        <input type="text" name="" id="loadId" >
+    <input type="text" name="" id="waterId" placeholder="water">
     </br><br>
-        <input type="text" name="" id="clothesId" placeholder="clothesId">
+    <input type="text" name="" id="loadId" placeholder="load" >
     </br><br>
-        <input type="text" name="" id="waterId" placeholder="waterId">
+    <input type="text" name="" id="clothesId" placeholder="clothes">
     </br><br>
+   
+    
+    
         <button onclick="howMuchWater()"> Submit</button>
    
 
@@ -31,21 +34,40 @@
         //     return(load);
         // }
      
-        
      
     function howMuchWater(water, load, clothes){
-            
-        var load = document.getElementById('loadId').value;
-        var clothes = document.getElementById('clothesId').value;
-        var water = document.getElementById('waterId').value;
-        console.log(load);
-        console.log(clothes);
-        console.log(water);
-        
-        var amountWater = water * 1.1 ^ (clothes - load);
-        amountWater = Math.round(amountWater)
-        console.log(amountWater);
-        return[amountWater];
+         
+        var water = Number(document.getElementById('waterId').value);
+        var load = Number(document.getElementById('loadId').value);
+        var clothes = Number(document.getElementById('clothesId').value);
+        var pow = (clothes-load)
+        var power = Math.pow(1.1, pow); 
+        var amountWater
+        console.log(typeof water);
+        console.log(typeof load);
+        console.log(typeof clothes);
+        console.log(typeof pow);
+        console.log(typeof power);
+
+        if (clothes> 2*load){
+            amountWater='Too much clothes';
+            console.log(amountWater);
+            console.log(typeof amountWater);
+        } else if (clothes < load) {
+            amountWater='Not enough clothes';
+            console.log(amountWater);
+            console.log(typeof amountWater);
+        } else { 
+            //console.log(pow);
+            //console.log (power);
+            console.log(water); 
+            console.log(load);
+            console.log(clothes);
+            amountWater=Math.round((water*power)*100)/100;
+            console.log(amountWater);
+            console.log(typeof amountWater);
+        }
+        return(amountWater);    
         
     }
 
