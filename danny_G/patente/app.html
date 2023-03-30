@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Noleggia auto</h1>
+    <p>Come vuoi inserire la tua età?</p>
+    <input type="radio" id="inputId" name="selection" value="input" onchange="inputText()">
+        <label for="inputId">Input</label><br>
+    <input type="radio" id="sliderId" name="selection" value="slider" onchange="sliderShow()">
+        <label for="sliderId">Slider</label><br>
+    <input type="radio" id="dataId" name="selection" value="data" onchange="dataShow()" >
+        <label for="dataId">Data</label>
+    <br><br>
+
+    <div>
+        <input type="number" id="ageInput" name="quantity" min="0" max="150" disabled>
+        <p></p>
+    </div>
+
+    <div>
+        <input type="range" min="0" max="150" value="50" id="rangeInput" disabled>
+        <p></p>
+    </div>
+
+    <div>
+        <input type="date" id="dateInput" disabled>
+        <p></p>
+    </div>
+    
+
+    <script>
+
+        function inputText(){
+            document.getElementById('ageInput').disabled = false;
+            document.getElementById('rangeInput').disabled = true;
+            document.getElementById('dateInput').disabled = true;
+         }  
+        
+        function sliderShow(){
+            document.getElementById('ageInput').disabled = true;
+            document.getElementById('rangeInput').disabled = false;
+            document.getElementById('dateInput').disabled = true;
+            
+         } 
+
+        function dataShow(){
+            document.getElementById('ageInput').disabled = true;
+            document.getElementById('rangeInput').disabled = true;
+            document.getElementById('dateInput').disabled = false;
+            
+         }  
+
+       
+        
+         
+
+
+
+
+
+    </script>
+
+    
+</body>
+</html>
