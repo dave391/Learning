@@ -9,6 +9,7 @@
 <body>
     <h1>Noleggia auto</h1>
     <p>Come vuoi inserire la tua età?</p>
+
     <input type="radio" id="inputId" name="selection" value="input" onchange="inputText()">
         <label for="inputId">Input</label><br>
     <input type="radio" id="sliderId" name="selection" value="slider" onchange="sliderShow()">
@@ -18,22 +19,34 @@
     <br><br>
 
     <div>
-        <input type="number" id="ageInput" name="quantity" min="0" max="150" disabled>
-        <p></p>
+        <label for="ageName"> Inserisci la tua età : </label>
+        <input type="number" id="ageInput" name="ageName" min="0" max="150" disabled>
     </div>
 
     <div>
         <input type="range" min="0" max="150" value="50" id="rangeInput" disabled>
-        <p></p>
+        <p id="valueSlider"></p>
+        
     </div>
 
     <div>
-        <input type="date" id="dateInput" disabled>
+        <input type="date" id="dateInput" disabled onchange="test()">
         <p></p>
     </div>
+
+    <div id="test"> </div>
+    <div id="test1"> </div>
+
     
 
     <script>
+        var slider = document.getElementById("rangeInput");
+        var output = document.getElementById("valueSlider");
+        output.innerHTML = slider.value; // Display the default slider value
+        // Update the current slider value (each time you drag the slider handle)
+        slider.oninput = function() {
+            output.innerHTML = this.value;
+        }
 
         function inputText(){
             document.getElementById('ageInput').disabled = false;
@@ -54,6 +67,14 @@
             document.getElementById('dateInput').disabled = false;
             
          }  
+
+        var data = document.getElementById("dateInput").value;
+        const y = new Date();
+        function test(){
+        document.getElementById('test').innerHTML = y;
+        document.getElementById('test1').innerHTML= (typeof(data));
+        }
+
 
        
         

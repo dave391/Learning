@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <Button onclick = caricaLista()> Carica la lista</Button>
+    <div id = lista></div>
+    
+<script>
+
+    function caricaLista(){
+        var lista = ['Davide','Carla','Linh','Wallo','Ahmed','Antonio'];
+        var name = "";
+
+        for (var i = 0; i < lista.length; i++) {
+            name += (i+1)+' '+lista[i]+"<br>";
+        }
+        
+        document.getElementById('lista').innerHTML=name;
+    }
+
+
+</script>
+
+</body>
+</html>
+
+
+</body>
+</html>
