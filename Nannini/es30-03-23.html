@@ -8,8 +8,15 @@
 </head>
 
 <body>
-    <Button onclick = caricaLista()> Carica la lista</Button>
+    <button onclick = caricaLista()> Carica la lista</Button>
     <div id = lista></div>
+        <br>
+    <div id = listaReverse></div>
+        <br>
+    <div id=listaUnita></div>
+        <br>
+    <div id=listaUnita2></div>
+    <!-- <button onclick = secondaFunzione()>  Seconda funziona</button> -->
     
 <script>
 
@@ -20,9 +27,57 @@
         for (var i = 0; i < lista.length; i++) {
             name += (i+1)+' '+lista[i]+"<br>";
         }
-        
         document.getElementById('lista').innerHTML=name;
+
+        // var reverseName = "";
+        // for (i=lista.length-1; i>=0; i--) {
+        //     reverseName += (i+1)+' '+lista[i]+"<br>";
+        // }
+
+        var listaReverse=['']
+        for (i=lista.length-1; i>=0; i--) {
+            listaReverse [lista.length-1-i] = lista[i];
+        }
+
+        // var listaReverse2=['']
+        // for (i=0; i<lista.length; i++) {    
+        // listaReverse2 [lista.length-1-i] = lista[i];
+        //     }
+           
+        var nameReverse = "";
+        for (var i=0; i<listaReverse.length; i++)  {
+            nameReverse += (listaReverse.length-i)+' '+listaReverse[i]+"<br>";
+        }
+        document.getElementById('listaReverse').innerHTML=nameReverse;
+
+
+        var listaUnita = "";
+        var listaUnita2= "";
+        for (var i=0; i<listaReverse.length; i++) {
+            listaUnita += (i+1)+' '+lista[i]+"<br>";
+            listaUnita2 += (lista.length-i)+' '+lista[lista.length-i-1]+"<br>"
+        }
+
+        document.getElementById('listaUnita').innerHTML=listaUnita;
+        document.getElementById('listaUnita2').innerHTML=listaUnita2;
+
+        console.log(listaUnita);
+        console.log(listaReverse);
+        console.log (listaUnita+listaUnita2)
+        //console.log(listaReverse2);
+        //document.getElementById('listaReverse').innerHTML=listaReverse;
+        //document.getElementById('listaReverse').innerHTML=reverseName;
     }
+
+
+    // function secondaFunzione () {
+    //     const lista2 = ['Davide','Carla','Linh','Wallo','Ahmed','Antonio'];
+    //     var reverseName = "";
+    //     for (i=lista2.length-1; i>=0; i--) {
+    //         reverseName += (i+1)+' '+lista2[i]+"<br>";
+    //     }
+    //     document.getElementById('listaReverse').innerHTML=reverseName;
+    // }
 
 
 </script>

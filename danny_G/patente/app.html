@@ -36,6 +36,7 @@
 
     <div id="test"> </div>
     <div id="test1"> </div>
+    <div id="test2"> </div>
 
     
 
@@ -68,13 +69,37 @@
             
          }  
 
-        var data = document.getElementById("dateInput").value;
-        const y = new Date();
+        //var data = document.getElementById("dateInput").value;
+        var data = document.getElementById('dateInput')
+       
+        data.innerHTML =data.value;
+        data.onsubmit = function() {
+                test1.innerHTML=this.value
+            }
+        let y = new Date();
         function test(){
         document.getElementById('test').innerHTML = y;
-        document.getElementById('test1').innerHTML= (typeof(data));
         }
 
+        let day = y.getDate();
+        console.log(day);
+        
+
+        document.getElementById("dateInput").addEventListener("change", function() {
+        var input = this.value;
+        var dateEntered = new Date(input);
+        document.getElementById('test1').innerHTML= input;
+        document.getElementById('test2').innerHTML= dateEntered;
+        console.log(input); //e.g. 2015-11-13
+        console.log(dateEntered); //e.g. Fri Nov 13 2015 00:00:00 GMT+0000 (GMT Standard Time)
+        let day2=dateEntered.getDate();
+        console.log(day2);
+        });
+
+        
+        
+        
+    
 
        
         
