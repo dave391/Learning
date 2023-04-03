@@ -6,51 +6,79 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
+
+
+
 <body onload="loadPage()">
     <div id="loadPageID"></div>
    
-    <div id="lista"> </div>
-
+    
     <!--<button id="visualizzaBtnId" onclick="listShow()"> Visualizza lista</button>-->
-
-    <button id="btn-test" onclick="ListShow()">button test</button>
-
 
     <script>
         function loadPage(){
             load=
-            `<input type="text" name="path" id="pathId" onchange="buttonAble()">
+            `<input type="text" name="path" id="pathId" onchange="buttonAble()" autofocus>
             </br>
-            <button id="inserisciBtnId" disabled onclick="takePicturePath()"> Inserisci in lista </button> </br>`;
+            <button id="inserisciBtnId" disabled onclick="takePicturePath()"> Inserisci in lista </button> </br>
+            <button id="btnCaricaId" disabled onclick="ListShow()">Carica</button>
+            <div id="lista"> </div>
+            <div id="imgDivId"> <img id="imgId" src="" alt=""> </div>
+           `
+
+           ;
             document.getElementById("loadPageID").innerHTML=load;
         }
 
         function buttonAble() {
             document.getElementById("inserisciBtnId").disabled = false;
+            
         }
         
         var list = [];
         function takePicturePath () {
-            list.push(document.getElementById("pathId").value);
+            
+
+            if (!list.includes(document.getElementById("pathId").value)) {
+                list.push(document.getElementById("pathId").value);
+                
+            } else {
+                alert("Percorso immagine già inserito!");
+            }
+            
             document.getElementById("pathId").value="";
             document.getElementById("inserisciBtnId").disabled = true;
-            
+            document.getElementById("btnCaricaId").disabled=false;
+    
         }
         
         let link =""; 
         function ListShow() {
-            //console.log(list);
+                //console.log(list);
             for (let j=0; j < list.length ; j++) {
                 //link += '<div id="''"><a href='+'"'+list[j]+'">'+list[j]+'</a></div><br>';
-                link += '<div id='+(j+1)+' onclick="openImage()"><a href='+'"'+list[j]+'"'+'>'+list[j]+'</a></div><br>'
-            }
-        document.getElementById("lista").innerHTML= link;
+                //document.getElementById("imgId").src=getElementById("(j+1)").value;
+                // link += '<div><a href='+'"'+list[j]+'"'+'target="imgFrame" onclik="openImage('+(j)+')" id='+(j+1)+'>'+list[j]+'</a></div><br>';
+
+                link += '<div><a onclick="openImage('+(j)+')"'+'id='+(j+1)+'>'+list[j]+'</a></div><br>';
+
+
+                //let img = document.getElementById("imgId").src=list[j].value;
+            } 
+                document.getElementById("lista").innerHTML= link;
+            // show=`<iframe name= "imgFrame" src="" frameborder="0"></iframe>`;
+            // document.getElementById("imgDivId").innerHTML= show;
         }
 
-       function openImage(){
-        document.getElementById().value
+
+           function openImage(i){
+            let img = document.getElementById("imgId").src=list[i];
+            document.getElementById("imgId").innerHTML= img;
        }
 
+        // C:\Users\libero.bo\Desktop\Corso\BACKEND\Learning\Nannini\img\mare.jpg
+        //C:\Users\libero.bo\Desktop\Corso\BACKEND\Learning\Nannini\img\montagna.jpg
         //https://stackoverflow.com/questions/61169448/click-on-the-list-item-it-toggles-the-line-through-sytle-class-on-and-off
         //<p><a href="/css/default.asp">CSS Tutorial</a></p>
         //<div id="lista"> </div>
