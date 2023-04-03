@@ -42,6 +42,7 @@
 
             if (!list.includes(document.getElementById("pathId").value)) {
                 list.push(document.getElementById("pathId").value);
+                document.getElementById("btnCaricaId").disabled=false
                 
             } else {
                 alert("Percorso immagine già inserito!");
@@ -49,7 +50,7 @@
             
             document.getElementById("pathId").value="";
             document.getElementById("inserisciBtnId").disabled = true;
-            document.getElementById("btnCaricaId").disabled=false;
+            
     
         }
         
@@ -63,15 +64,14 @@
 
                 link += '<div><a onclick="openImage('+(j)+')"'+'id='+(j+1)+'>'+list[j]+'</a></div><br>';
 
-
                 //let img = document.getElementById("imgId").src=list[j].value;
             } 
                 document.getElementById("lista").innerHTML= link;
+                document.getElementById("btnCaricaId").disabled=true;
+            
             // show=`<iframe name= "imgFrame" src="" frameborder="0"></iframe>`;
             // document.getElementById("imgDivId").innerHTML= show;
         }
-
-
            function openImage(i){
             let img = document.getElementById("imgId").src=list[i];
             document.getElementById("imgId").innerHTML= img;
