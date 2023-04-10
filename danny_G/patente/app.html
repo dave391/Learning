@@ -30,13 +30,15 @@
     </div>
 
     <div>
-        <input type="date" id="dateInput" disabled onchange="test()">
+        <input type="date" id="dateInput" disabled>
         <p></p>
     </div>
 
     <div id="test"> </div>
     <div id="test1"> </div>
     <div id="test2"> </div>
+
+    <div> <button onclick="showPatente()"> Bottone Test </button></div>
 
     
 
@@ -77,37 +79,71 @@
                 test1.innerHTML=this.value
             }
         let y = new Date();
-        function test(){
-        document.getElementById('test').innerHTML = y;
-        }
+        
+      
 
         let day = y.getDate();
-        console.log(day);
+        
         
 
         document.getElementById("dateInput").addEventListener("change", function() {
-        var input = this.value;
-        var dateEntered = new Date(input);
-        document.getElementById('test1').innerHTML= input;
-        document.getElementById('test2').innerHTML= dateEntered;
-        console.log(input); //e.g. 2015-11-13
-        console.log(dateEntered); //e.g. Fri Nov 13 2015 00:00:00 GMT+0000 (GMT Standard Time)
+        let input = this.value;
+        let dateEntered = new Date(input);
         let day2=dateEntered.getDate();
-        console.log(day2);
-        });
+        let yearToday = y.getFullYear();
+        let yearOver = dateEntered.getFullYear();
+        
+        if (yearToday-yearOver)
+
+        switch((yearToday-yearOver) > 18 ) {
+            case false:
+                if((yearToday-yearOver) == 18 ){
+                    let esito = "risultato uguale a 18";
+                    test2.innerHTML= esito;
+                    break;
+                }
+                else{
+                    let esito= "sei troppo piccolo per noleggiare un auto";
+                    test2.innerHTML= esito;
+                    break;
+                }
+                break;
+            case true:
+                     let esito= "ottimo, puoi procedere con il noleggio";
+                     test2.innerHTML= esito;
+                     showPatente();                
+                break;
+                    
+            }
+             })
+        
+
+        function showPatente () {
+            const radioSi = document.createElement("input");
+            radioSi.type = "radio";
+            radioSi.name = "radio";
+            radioSi.id ="radioSiId";
+            const labelSi = document.createElement("label");
+            //labelSi.for radioSiId = "Si"; 
+            labelSi.for = "radioSiId";
+            labelSi.innerHTML = "Si";
+            const radioNo = document.createElement("input");
+            radioNo.type = "radio";
+            radioNo.name = "radio";
+            radioNo.id ="radioNoId";
+            const labelNo = document.createElement("label");
+            
+            labelNo.for = "radioNod";
+            labelNo.innerHTML = "No";
+        // Append to body:
+            document.body.appendChild(radioSi);
+            document.body.appendChild(labelSi);
+            document.body.appendChild(radioNo);
+            document.body.appendChild(labelNo);
+             }
 
         
         
-        
-    
-
-       
-        
-         
-
-
-
-
 
     </script>
 
