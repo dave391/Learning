@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Esercizi per Giovedi</title>
+    <link rel="stylesheet" href="Esercizio_5_4.css">
+</head>
+
+<body id="" onload="caricapagina()">
+    <main id="main_id">
+        <script>
+
+            //DEFINIZIONE ELEMENTI BASE DELLA PAGINA
+
+            let div_1 = document.createElement('div');
+            div_1.setAttribute('id', 'div_es1');
+            let div_2 = document.createElement('div');
+            div_2.setAttribute('id', 'div_es2');
+            let div_3 = document.createElement('div');
+            div_3.setAttribute('id', 'div_es3');
+            let div_4 = document.createElement('div');
+            div_4.setAttribute('id', 'div_es4');
+            let div_5 = document.createElement('div');
+            div_5.setAttribute('id', 'div_es1_5');
+
+            let fieldset_1 = document.createElement('fieldset');
+            let legend_1 = document.createElement('legend');
+            legend_1.setAttribute('class','leg_1')
+            fieldset_1.setAttribute('id', 'fldid_1')
+            let fieldset_2 = document.createElement('fieldset');
+            let legend_2 = document.createElement('legend');
+            fieldset_2.setAttribute('id', 'fldid_2')
+            let fieldset_3 = document.createElement('fieldset');
+            let legend_3 = document.createElement('legend');
+            fieldset_3.setAttribute('id', 'fldid_3')
+            let fieldset_4 = document.createElement('fieldset');
+            let legend_4 = document.createElement('legend');
+            fieldset_4.setAttribute('id', 'fldid_4')
+
+            let main = document.getElementById('main_id')
+
+            //CARICAMENTO PAGINA SUL BODY  
+
+            function caricapagina() {
+                //CAMBIO IL VALORE DEI LEGEND
+
+                legend_1.innerHTML = 'Esercizio 1 - Crea array e seleziona dei valori';
+                legend_2.innerHTML = 'Esercizio 2 - Crea un generatore di tag';
+                legend_3.innerHTML = 'Esercizio 3 - Crea una tabella scegliendo la grandezza';
+                legend_4.innerHTML = 'Esercizio 4 - Filtra le parole';
+
+                //APPENDO AL MAIN I DIV
+                main.appendChild(div_1);
+                main.appendChild(div_2);
+                main.appendChild(div_3);
+                main.appendChild(div_4);
+                //APPENDO AI DIV I CORRISPETTIVI
+                div_1.appendChild(fieldset_1);
+                fieldset_1.appendChild(legend_1);
+                fieldset_1.appendChild(div_5);
+                div_2.appendChild(fieldset_2);
+                fieldset_2.appendChild(legend_2);
+                div_3.appendChild(fieldset_3);
+                fieldset_3.appendChild(legend_3);
+                div_4.appendChild(fieldset_4);
+                fieldset_4.appendChild(legend_4);
+
+                //CARICO I BTN INIZIALI DI OGNI ESERCIZIO,INIZIALIZZO
+                caricaes1();
+                caricaes2();
+                caricaes3();
+                caricaes4();
+            }
+
+            //ESERCIZIO 1
+
+            //CREO FUNZIONE RANDOM
+            function getRandomInt(min, max) {
+                min = Math.ceil(min);
+                max = Math.floor(max);
+                return Math.floor(Math.random() * (max - min + 1)) + min;
+            }
+            //DEFINISCO LA FUNZIONE CARICAES,IN MODO CHE LA POSSA CARICANE NELLA FUNZIONE CARICAPAGINA
+
+            function caricaes1() {
+                // let bottone = document.getElementById('btncaricaid1'); CERCAVO DI VERIFICARE L'ESISTENZA DI BOTTONE 
+                // if (!bottone) { 
+                let btn_carica = document.createElement('input');
+                btn_carica.setAttribute('type', 'button');
+                btn_carica.setAttribute('value', 'Carica Esercizio 1');
+                btn_carica.setAttribute('id', 'btncaricaid1');
+                btn_carica.setAttribute('onclick', 'esercizio_1()');//IL BTN APPENA CREATO CARICA L'ESERCIZIO1
+                fieldset_1.appendChild(btn_carica)//IL BTN CREATO APPESO COME 3RD CHILD DI FLD1(HA PRIMA LEGEND 1 E DIV5)
+            }
+            // }
+
+            //DEFINISCO FUNZIONE CHE CREA ES 1
+            function esercizio_1() {
+
+                // cancdiv()
+                cancfld()//FUNZ CHE CANCELLA ULTIMO CHILD(BTN CHE CARICA ES 1,AD OGNI CLIC LO CANCELLO)
+
+
+
+
+
+                let array = [];//INIZIALIZZO I 3 ARRAY CHE MI SERVIRANNO PER LE OPERAZIONI
+                let array2 = [];
+                let array3 = [];
+
+                for (let i = 0; i < 10; i++) {//QUESTO CICLO PUSHA I VALORI RANDOM CHE HO CREATO TRAMITE LA FUNZIONE DI PRIMA,LI PUSHA NEL PRIMO ARRAY
+                    let random = getRandomInt(1, 300)
+                    /**/
+                    array.push(random);
+                    // console.log(array);
+                }
+                let p = document.createElement('p')
+                p.setAttribute('id', 'pid')
+                let p1 = document.createElement('p')//CREO ELEMENTI PARAGRAFO DOVE METTERO' GLI ARRAY CREATI PRIMA(3 ARRAY : 3 P)
+                p1.setAttribute('id', 'pid1')
+                let p2 = document.createElement('p');
+                p2.setAttribute('id', 'pid2')
+
+
+                p.innerHTML = array; //ALL'ARRAY A CUI HO PUSHATO I VALORI RANDOM LO COPIO NEL PRIMO P (LO SCRIVO DENTRO P)
+                console.log(p)
+
+                numpari();//LA F IN QUESTIONE PRENDE COME CONTATORE LA LUNGHEZZA DI ARRAY(10),CICLA I VALORI VERIFICANDO CHE SIANO P A R I E SE SI LI AGGIUNGE AD ARRAY2
+                // p1.innerHTML = array2; FACENDO COSI SI SOVRASCIVE!!ERRRRROR!!DIVENTA STRINGA
+
+                numpospari();//QUESTA F INVECE FA IL CHECK SULLA POSIZIONE(GRAZIE MASSIMO PER IL CODICE COPIATO BELLAMENTE) DEI VALORI ARRAY,SE POSIZIONE PARY PUSHO
+                // p2.innerHTML = array3; IDEM!!
+
+
+                //CONTROLLO L'ESISTENZA DEI DUE BOTTONI PREVENTIVAMENTE AL PRIMO GIRO DI FUNZIONE,SE NON CI SONO(!CTRL) LI CREO TRAMITE FUNZIONE INTERNA,IN CASO CONTRARIO AD OGNI CLICK NE APPENDA ALLA FINE ALTRI DUE
+                let ctrl = document.getElementById('btnric')
+                let ctrl2 = document.getElementById('btncanc')
+                if (!ctrl) {
+                    button()
+                }
+                if (!ctrl2) {
+                    button2()
+                }
+
+
+                function button() {
+                    let btn_ricarica = document.createElement('input');//FUNZIONI DESCRITTE SOTTO
+                    btn_ricarica.setAttribute('type', 'button');
+                    btn_ricarica.setAttribute('value', 'Ricarica Esercizio 1');
+                    btn_ricarica.setAttribute('onclick', 'es1recall()');
+                    btn_ricarica.setAttribute('id', 'btnric')
+                    fieldset_1.appendChild(btn_ricarica)
+                }
+
+                function button2() {
+                    let btn_canc = document.createElement('input');
+                    btn_canc.setAttribute('type', 'button');
+                    btn_canc.setAttribute('value', 'Cancella');
+                    btn_canc.setAttribute('onclick', 'cancdiv1()');
+                    btn_canc.setAttribute('id', 'btncanc')
+
+
+                    fieldset_1.appendChild(btn_canc)
+                }
+
+                function numpari() {
+                    for (let i = 0; i < array.length; i++) {
+                        if (array[i] % 2 == 0) {//ARRAY POS.0,SE SI LO AGGIUNGO,SENNO' RIPARTO
+                            array2.push(array[i])
+                            // console.log(array2[i])
+
+                            p1.innerHTML = array2;
+                        }
+
+                    }
+                }
+
+
+                function numpospari() {
+                    for (let i = 0; i < array.length; i += 2) {
+                        array3.push(array[i])//PUSHO DA POS 0 FINO ALLA FINE DELL'ARRAY SALTANDO DI 2
+                        p2.innerHTML = array3;//SCRIVO L'ARRAY NEL P
+                    }
+                }
+
+
+
+
+                // function cancdiv() {
+                //     // div_5.removeChild(div_5.lastChild)
+                //     // div_5.removeChild(div_5.lastChild)
+                //     // div_5.removeChild(div_5.lastChild)
+                //     if ((p && p1) && (p1 && p2)) {
+                //         p.innerHTML = ''
+                //         p1.innerHTML = ''
+                //         p2.innerHTML = ''
+                //     }
+                // }
+                function cancfld() {
+                    fieldset_1.removeChild(fieldset_1.lastChild); //PRIMA VERSIONE
+                    //LA FUNZIONE PER IL BOTTONE,IL BOTTONE PER LA FUNZIONE..QUELLA FUNZIONE?!SI,CANCELLA IL BTN CARICA ES QUANDO CARICA L'ES
+                    // btn_carica =document.getElementById('btncaricaid1') //DEVO RIDEFINIRE LA VAR PERCHè è ALL'EXT DELLA FUNZIONE IN CUI è CONTENUTA
+                    // btn_carica.remove()
+                }
+
+
+                div_5.appendChild(p)//APPEND AL DIV CREATO APPOSTA E VISUALIZO I 3 ARRAY
+                div_5.appendChild(p1)
+                div_5.appendChild(p2)
+            }
+
+
+            function cancdiv1() {//FUNZ CHE HO DICHIARATO FUORI PER DARLA AD UN BOTTONE,QUESTA FUNZIONE CANCELLA GLI ARRAY,OVVERO RIMUOVE GLI ULTIMI 3 CHILD DI DIV5,RIMUOVE I BOTTONI E RICASTA IL BOTTONE INIZIALE!!
+                for (let i = 0; i < 3; i++) {
+                    // console.log(pp)
+                    div_5.removeChild(div_5.lastChild)
+                    
+
+                }
+                fieldset_1.removeChild(fieldset_1.lastChild)
+                fieldset_1.removeChild(fieldset_1.lastChild)
+                caricaes1()
+
+
+
+            }
+
+            function es1recall() {//RICARICA CONTINUAMENTE L'ESERCIZIO 1
+
+
+                let pp = document.getElementById('pid')//PRENDO IL P PRINCIPALE PER VERIFICARNE L'ESISTENZA NELLA FUNZ CANCDIV(DA NON CONFONDERE CON QUELLE ESTERNE CHIAMATE CANCDIV1,ECC)
+                // let pp1 = document.getElementById('pid1')
+                // let pp2 = document.getElementById('pid2')
+                function cancdiv() {
+                    if (pp) {
+                        for (let i = 0; i < 3; i++) {
+                        div_5.removeChild(div_5.lastChild) //FA LA STESSA COSA DEL CANCDIV DENTRO ESERCIZIO1
+                        }
+
+
+
+                        // array.pop() //ANCHE SE CANCELLO GLI ELEMENTI DALL'ARRAY IL P CONTINUA AD ESISTERE
+                        // array2.pop()
+                        // array3.pop()
+                        // pp.innerHTML = ''; USANDO QUESTO METODO CAMBIEREI SOLO IL TXT NON LA SUA ESISTENZA
+                        // pp1.innerHTML = ''
+                        // pp2.innerHTML = '' MI SERVE APPUNTO CHE L'OGGETTO NON ESISTA PER POTER AGIRE SUL PROGRAMMA
+
+                    }
+                }
+                //RIMUOVO 3 ELEMENTI FACCIO 3 GIRI DI CONTATORE
+                    // console.log(pp)
+                cancdiv();
+
+                
+                esercizio_1()//RICARICO ESERCIZIO 1,AVENDO IMPOSTATO LE CONDIZIONI DI ESISTENZA DEI BOTTONI E CANCELLATO I CHILD DEL DIV CHE VISUALIZZA A SCHERMO GLI ARRAY POSSO ESSERE RICREATI IN MANIERA UNIVOCA!!
+
+            }
+
+
+
+            function caricaes2() {
+
+                let btn_carica = document.createElement('input');
+                btn_carica.setAttribute('type', 'button');
+                btn_carica.setAttribute('value', 'Carica Esercizio 2');
+                btn_carica.setAttribute('id', 'btncaricaid2');
+                btn_carica.setAttribute('onclick', 'esercizio_2()');
+                fieldset_2.appendChild(btn_carica)
+
+            }
+
+
+            function esercizio_2() {
+
+                cancfld()//cancello bottone CANCELLANDO L'ULTIMO CHILD DI FIELDSET LO RICASTO DOPO
+
+                let txt;//DEFINISCO LE VAR A CUI ASSEGNERO GLI OGGETTI CREATI
+                let txtarea;
+                let p;
+                let h1;
+                let a;
+                let inpbtn;
+
+                let reset = document.createElement('input');//CREO IL BOTTONE PER RESETTARE L'ESERCIZIO
+                reset.setAttribute('type', 'button')
+                reset.setAttribute('value', 'reset')
+                reset.setAttribute('onclick', 'cancdiv2()')
+                reset.setAttribute('id', 'btnrst2')
+
+                window.alert('casi disponibili: \na\np\nh1\ntextarea\ninput button')
+                let input = prompt('inserisci lettera tag');
+
+                switch (input) {
+                    case 'p':
+                        p = document.createElement('p')
+                        ptxt = document.createTextNode('sono P');
+                        fieldset_2.appendChild(p);
+                        p.appendChild(ptxt);
+                        p.appendChild(reset)
+                        break;
+                    case 'h1':
+                        h1 = document.createElement('h1')
+                        let htxt = document.createTextNode('sono H');
+                        fieldset_2.appendChild(h1);
+                        h1.appendChild(htxt);
+                        h1.appendChild(reset)
+                        break;
+                    case 'a':
+                        a = document.createElement('a')
+                        let atxt = document.createTextNode('sono a');
+
+                        a.setAttribute('href', 'https://www.google.com/')
+                        a.setAttribute('target', '_blank')
+                        console.log(a)
+                        fieldset_2.appendChild(a);
+                        a.appendChild(atxt);
+                        a.appendChild(reset)
+                        break;
+                    case 'input button':
+                        inpbtn = document.createElement('input')
+                        inpbtn.setAttribute('type', 'button')
+                        inpbtn.setAttribute('value', 'sono un bottone!')
+                        inpbtn.setAttribute('onclick', 'cancdiv2()')
+                        let inpbtntxt = document.createTextNode('sono P');
+                        fieldset_2.appendChild(inpbtn);
+                        inpbtn.appendChild(inpbtntxt);
+                        inpbtn.appendChild(reset)
+                        break;
+                    case 'textarea':
+                        txtarea = document.createElement('textarea');
+                        testo = document.createTextNode('sono textarea')
+                        fieldset_2.appendChild(txtarea);
+                        txtarea.appendChild(testo)
+                        txtarea.appendChild(reset)
+                        break;
+                    default:
+                        // txt = document.createTextNode('ritenta!')
+                        // fieldset_2.appendChild(txt)
+                        // fieldset_2.appendChild(reset)
+                        caricaes2()
+
+
+                }
+                function cancfld() {
+                    fieldset_2.removeChild(fieldset_2.lastChild);
+
+
+                }
+            }
+            function cancdiv2() {
+                fieldset_2.removeChild(fieldset_2.lastChild)
+                caricaes2()
+            }
+
+
+            function caricaes3() {
+                let btn_carica = document.createElement('input');
+                btn_carica.setAttribute('type', 'button');
+                btn_carica.setAttribute('value', 'Carica Esercizio 3');
+                btn_carica.setAttribute('id', 'btncaricaid3');
+                btn_carica.setAttribute('onclick', 'esercizio_3()');
+                fieldset_3.appendChild(btn_carica)
+            }
+            function esercizio_3() {
+                cancfld()
+                window.alert('ti verrà chiesto di inserire il numero delle righe e delle colonne.')
+                function generateTable(n, m) {
+
+                    const tbl = document.createElement("table");
+                    const tblBody = document.createElement("tbody");
+
+
+                    for (let i = 0; i < n; i++) {
+
+                        const row = document.createElement("tr");
+
+                        for (let j = 0; j < m; j++) {
+
+                            const cell = document.createElement("td");
+                            const cellText = document.createTextNode(`cell in row ${i}, column ${j}`);
+                            cell.appendChild(cellText);
+                            row.appendChild(cell);
+                        }
+
+
+                        tblBody.appendChild(row);
+                    }
+
+
+                    tbl.appendChild(tblBody);
+
+                    fieldset_3.appendChild(tbl);
+
+                    tbl.setAttribute("border", "2");
+                }
+                let n = prompt('ins numero righe')
+                let m = prompt('ins numero colonne')
+                generateTable(n, m)
+
+                let reset = document.createElement('input');
+                reset.setAttribute('type', 'button')
+                reset.setAttribute('value', 'reset')
+                reset.setAttribute('onclick', 'cancdiv3()')
+                fieldset_3.appendChild(reset)
+                function cancfld() {
+                    fieldset_3.removeChild(fieldset_3.lastChild);
+
+
+                }
+            }
+            function cancdiv3() {
+                fieldset_3.removeChild(fieldset_3.lastChild)
+                fieldset_3.removeChild(fieldset_3.lastChild)
+                caricaes3()
+            }
+
+
+            function caricaes4() {
+                let btn_carica = document.createElement('input');
+                btn_carica.setAttribute('type', 'button');
+                btn_carica.setAttribute('value', 'Carica Esercizio 4');
+                btn_carica.setAttribute('id', 'btncaricaid4');
+                btn_carica.setAttribute('onclick', 'esercizio_4()');
+                fieldset_4.appendChild(btn_carica)
+            }
+
+        </script>
+    </main>
+</body>
+
+</html>
