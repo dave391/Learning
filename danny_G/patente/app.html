@@ -5,18 +5,22 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <h1>Noleggia auto</h1>
     <p>Come vuoi inserire la tua età?</p>
 
-    <input type="radio" id="inputId" name="selection" value="input" onchange="inputText()">
+    <div class = "radioInput">
+    <input class = "radioInputChoise" type="radio" id="inputId" name="selection" value="input" onchange="inputText()">
         <label for="inputId">Input</label><br>
-    <input type="radio" id="sliderId" name="selection" value="slider" onchange="sliderShow()">
+    <input class = "radioInputChoise" type="radio" id="sliderId" name="selection" value="slider" onchange="sliderShow()">
         <label for="sliderId">Slider</label><br>
-    <input type="radio" id="dataId" name="selection" value="data" onchange="dataShow()" >
+    <input class = "radioInputChoise" type="radio" id="dataId" name="selection" value="data" onchange="dataShow()" >
         <label for="dataId">Data</label>
     <br><br>
+    </div>
 
     <div>
         <label for="ageName"> Inserisci la tua età : </label>

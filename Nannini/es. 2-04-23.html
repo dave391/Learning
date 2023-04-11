@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+
 </head>
 
 
@@ -20,10 +21,19 @@
         function loadPage(){
             load=
             `<input type="text" name="path" id="pathId" onchange="buttonAble()" autofocus>
+            <br>
             </br>
-            <button id="inserisciBtnId" disabled onclick="takePicturePath()"> Inserisci in lista </button> </br>
+            <button id="inserisciBtnId" disabled onclick="takePicturePath()">
+            Inserisci in lista </button>
+            
             <button id="btnCaricaId" disabled onclick="ListShow()">Carica</button>
+            <br>
             <div id="lista"> </div>
+            <br>
+            <input type="text" name="path" id="removeId">
+            <br><br>
+            <button id="btnRemoveId"  onclick="remove()">Elimina</button>
+            <br>
             <div id="imgDivId"> <img id="imgId" src="" alt=""> </div>
            `
 
@@ -72,13 +82,29 @@
             // show=`<iframe name= "imgFrame" src="" frameborder="0"></iframe>`;
             // document.getElementById("imgDivId").innerHTML= show;
         }
-           function openImage(i){
-            let img = document.getElementById("imgId").src=list[i];
-            document.getElementById("imgId").innerHTML= img;
+        function openImage(i){
+        let img = document.getElementById("imgId").src=list[i];
+        document.getElementById("imgId").innerHTML= img;
        }
 
+
+        function remove(){
+        const index = list.indexOf(document.getElementById("removeId").value);
+        if (index > -1) { // only splice array when item is found
+        list.splice(index, 1); // 2nd parameter means remove one item only
+        }
+        let link2 =""; 
+            for (let j=0; j < list.length ; j++){
+
+                link2 += '<div><a onclick="openImage('+(j)+')"'+'id='+(j+1)+'>'+list[j]+'</a></div><br>';
+
+                //let img = document.getElementById("imgId").src=list[j].value;
+            } 
+                document.getElementById("lista").innerHTML= link2;
+        }
+
         // C:\Users\libero.bo\Desktop\Corso\BACKEND\Learning\Nannini\img\mare.jpg
-        //C:\Users\libero.bo\Desktop\Corso\BACKEND\Learning\Nannini\img\montagna.jpg
+        // C:\Users\libero.bo\Desktop\Corso\BACKEND\Learning\Nannini\img\montagna.jpg
         //https://stackoverflow.com/questions/61169448/click-on-the-list-item-it-toggles-the-line-through-sytle-class-on-and-off
         //<p><a href="/css/default.asp">CSS Tutorial</a></p>
         //<div id="lista"> </div>
