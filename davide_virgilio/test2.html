@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Costruzione tabella</title>
+	<script>
+		function costruisciTabella() {
+			// Recupera il numero di righe e colonne inseriti dall'utente
+			var numRighe = parseInt(document.getElementById("num-righe").value);
+			var numColonne = parseInt(document.getElementById("num-colonne").value);
+			
+			// Verifica che i valori inseriti siano validi
+			if (isNaN(numRighe) || isNaN(numColonne) || numRighe <= 0 || numColonne <= 0) {
+				alert("Inserisci un valore valido per il numero di righe e di colonne.");
+				return;
+			}
+			
+			// Crea la tabella
+			var tabella = document.createElement("table");
+			
+			// Crea l'intestazione della tabella
+			var rigaIntestazione = document.createElement("tr");
+			for (var i = 1; i <= numColonne; i++) {
+				var cella = document.createElement("th");
+				var testoCella = document.createTextNode("Colonna " + i);
+				cella.appendChild(testoCella);
+				rigaIntestazione.appendChild(cella);
+			}
+			tabella.appendChild(rigaIntestazione);
+			
+			// Crea le righe della tabella
+			for (var i = 1; i <= numRighe; i++) {
+				var riga = document.createElement("tr");
+				for (var j = 1; j <= numColonne; j++) {
+					var cella = document.createElement("td");
+					var testoCella = document.createTextNode("Riga " + i + ", colonna " + j);
+					cella.appendChild(testoCella);
+					riga.appendChild(cella);
+				}
+				tabella.appendChild(riga);
+			}
+			
+			// Visualizza la tabella
+			var tabellaContainer = document.getElementById("tabella-container");
+			tabellaContainer.innerHTML = "";
+			tabellaContainer.appendChild(tabella);
+		}
+	</script>
+</head>
+<body>
+	<h1>Costruzione tabella</h1>
+	<label for="num-righe">Numero di righe:</label>
+	<input type="number" id="num-righe" min="1"><br><br>
+	<label for="num-colonne">Numero di colonne:</label>
+	<input type="number" id="num-colonne" min="1"><br><br>
+	<button onclick="costruisciTabella()">Crea tabella</button>
+	<div id="tabella-container"></div>
+</body>
+</html>

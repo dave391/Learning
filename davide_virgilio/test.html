@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Costruzione tabella</title>
+	<script>
+		function creaTabella() {
+			// Recupera il numero di righe e colonne inseriti dall'utente
+			var numRighe = parseInt(document.getElementById("num-righe").value);
+			var numColonne = parseInt(document.getElementById("num-colonne").value);
+			
+			// Verifica che i valori inseriti siano validi
+			if (numRighe > 0 && numColonne > 0) {
+				// Abilita il bottone "crea tabella"
+				document.getElementById("crea-tabella-btn").disabled = false;
+			} else {
+				alert("Inserisci un valore valido per il numero di righe e di colonne.");
+			}
+		}
+		
+		function costruisciTabella() {
+			// Recupera il numero di righe e colonne inseriti dall'utente
+			var numRighe = parseInt(document.getElementById("num-righe").value);
+			var numColonne = parseInt(document.getElementById("num-colonne").value);
+			
+			// Crea la tabella
+			var tabella = "<table>";
+			
+			// Crea l'intestazione della tabella
+			tabella += "<tr>";
+			for (var i = 1; i <= numColonne; i++) {
+				tabella += "<th>Colonna " + i + "</th>";
+			}
+			tabella += "</tr>";
+			
+			// Crea le righe della tabella
+			for (var i = 1; i <= numRighe; i++) {
+				tabella += "<tr>";
+				for (var j = 1; j <= numColonne; j++) {
+					tabella += "<td>Riga " + i + ", colonna " + j + "</td>";
+				}
+				tabella += "</tr>";
+			}
+			
+			tabella += "</table>";
+			
+			// Visualizza la tabella
+			document.getElementById("tabella-container").innerHTML = tabella;
+		}
+	</script>
+</head>
+<body>
+	<h1>Costruzione tabella</h1>
+	<label for="num-righe">Numero di righe:</label>
+	<input type="number" id="num-righe"><br><br>
+	<label for="num-colonne">Numero di colonne:</label>
+	<input type="number" id="num-colonne"><br><br>
+	<button onclick="creaTabella()">Verifica valori</button>
+	<button id="crea-tabella-btn" disabled onclick="costruisciTabella()">Crea tabella</button>
+	<div id="tabella-container"></div>
+</body>
+</html>
