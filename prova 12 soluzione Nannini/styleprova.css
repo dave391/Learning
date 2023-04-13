@@ -1,0 +1,7 @@
+table.Visible {
+    display:table;
+}
+
+table.Invisible {
+    display:none;
+}

@@ -88,7 +88,7 @@ function costruisciTabella() {
 	// Svuota tabella sul click dell'utente
 	btnSvuotaTabella.onclick = function()
 	{
-		var celleTabella = tabella.getElementsByTagName("col");
+		var celleTabella = tabella.getElementsByTagName("td");
 		for (var i = 0; i < celleTabella.length; i++) {
 			celleTabella[i].innerHTML = "";
 		}

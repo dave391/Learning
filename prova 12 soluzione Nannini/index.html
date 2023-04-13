@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prova sommativa</title>
+    <script src="provaSommativa.js"></script>
+    <link rel="stylesheet" href="styleprova.css">
+
+</head>
+<body>
+    <form name="myForm" action="" onsubmit ="return false"> 
+    <!--xil form fa il submit di default verso action, se voglio che il form faccia qualcosa di diverso, devo fare un submit con ritorno falso (funzione "return false")-->
+    <label for="txtNumeroRighe"> Numero righe </label>
+    <input type="number" name="txtNumeroRighe" id="txtNumeroRighe" min="1" onchange="abilitaBottoneCreaTabella()">
+    <label for="txtNumeroColonne"> Numero colonne </label>
+    <input type="number" name="txtNumeroColonne" id="txtNumeroColonne" min="1" onchange="abilitaBottoneCreaTabella()">
+    <button name="btnCreaTabella" onclick="creaTabella(document.myForm.txtNumeroRighe.value,document.myForm.txtNumeroColonne.value,'divTabella')" disabled > Crea tabella</button>
+    </form>
+    <div id="divTabella"> </div>
+    <button id="btnHideTable"  onclick="nascondiTabella()" disabled>Nascondi tabella</button>
+
+</body>
+</html>
