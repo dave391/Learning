@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <label for="inputMPG">Input MPG</label>
+    <input type="number" name="inputMPG" id="MPGId" oninput="convert()">
+    <div id="result"></div>
+    <script>
+        function convert(){
+            let input = document.getElementById("MPGId").value;
+            console.log (input);
+            let litresPerMile = input/4.54609188;
+            let litresPerMileRound = litresPerMile.toFixed(2);
+            let litresPerKm = litresPerMile*1.609344;
+            let litresPerKmRound = litresPerKm.toFixed(2);
+            document.getElementById("result").innerHTML= litresPerKmRound;
+            console.log (litresPerKmRound);
+            return (litresPerKmRound)
+        }
+
+    </script>
+</body>
+</html>
