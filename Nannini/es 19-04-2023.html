@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <label for="input">Inserisci elementi lista</label>
+    <input type="text" name="input" id="inputElementID">
+    <br>
+    
+    <button onclick="creaArray()">Inserisci in elenco</button>
+    <button onclick="visualizzaArray()"> Visualizza Elenco </button>
+    <div id="arraySpace"></div>
+    <br>
+    <label for="cercaElemento">Inserisci elemento che vuoi cercare</label>
+    <input type="text" name="cercaElemento">
+    <button onclick="cercaElemento()">Cerca elemanto </button>
+
+
+
+    <Script>
+
+    var array= [];
+    function creaArray(){
+        array.push(document.getElementById("inputElementID").value);        
+        document.getElementById("inputElementID").value="";
+       
+    }
+    
+    function visualizzaArray(){
+        document.getElementById("arraySpace").innerHTML=array;
+
+    }
+
+    
+
+
+
+    </Script>
+</body>
+</html>
