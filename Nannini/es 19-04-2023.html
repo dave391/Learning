@@ -10,14 +10,16 @@
     <label for="input">Inserisci elementi lista</label>
     <input type="text" name="input" id="inputElementID">
     <br>
-    
+    <br>
     <button onclick="creaArray()">Inserisci in elenco</button>
     <button onclick="visualizzaArray()"> Visualizza Elenco </button>
+    <button onclick="invertiArray()"> Inverti Elenco</button>
     <div id="arraySpace"></div>
+    <div id="arrayReverse"></div>
     <br>
     <label for="cercaElemento">Inserisci elemento che vuoi cercare</label>
-    <input type="text" name="cercaElemento">
-    <button onclick="cercaElemento()">Cerca elemanto </button>
+    <input type="text" name="cercaElemento" id="cercaElementoID">
+    <button onclick="cercaElemento()">Cerca elemento </button>
 
 
 
@@ -35,6 +37,38 @@
 
     }
 
+    function invertiArray(){
+        let arrayInvertito = array.reverse();
+        document.getElementById("arrayReverse").innerHTML=arrayInvertito;
+    }
+
+    function cercaElemento(){
+        let ElementoCercato = document.getElementById("cercaElementoID").value;
+        
+        if (array.includes(ElementoCercato)){
+            let index = array.indexOf(ElementoCercato)
+            arraySinistra = [];
+            arrayDestra = [];
+            console.log("Elemento presente alla posizione "+index)
+            for(let i = 0; i < index+1; i++){
+                arraySinistra.push(array[i]);
+            }
+            console.log(arraySinistra);
+
+            for(let i = index; i < array.length; i++){
+                arrayDestra.push(array[i]);
+            }
+            console.log(arrayDestra);
+
+
+
+        }else{
+            console.log("Non presente")
+        }
+
+
+
+    }
     
 
 
