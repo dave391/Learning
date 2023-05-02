@@ -88,6 +88,9 @@ def main ():
     st.text(f"I profitti previsti per l'anno sono : {profit_predicted}")
 
 
+    
+
+
 
 
 
