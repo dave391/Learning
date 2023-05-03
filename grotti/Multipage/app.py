@@ -16,7 +16,7 @@ def main():
 	st.title("My multipage APP")
 	st.image(image, caption='',use_column_width=True)
 
-				
+	
 	pag_name = ["pag1","pag2","pag3"]
 	
 	OPTIONS = pag_name
